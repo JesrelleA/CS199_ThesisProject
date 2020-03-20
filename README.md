@@ -8,6 +8,7 @@
 * Database
     * http://www.mwmdragon.com/2019/07/15/sqlite-in-unity/
     * https://sudonull.com/post/31981-Using-SQLite-in-Unity-Unity-SQLite
+    * Dowload Sqlite admin at http://sqliteadmin.orbmu2k.de/
 
 ## Current Scenes in Unity with their respective index
 Scene Name | Index
