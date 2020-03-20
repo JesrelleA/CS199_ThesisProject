@@ -10,8 +10,10 @@
     * https://sudonull.com/post/31981-Using-SQLite-in-Unity-Unity-SQLite
 
 ## Current Scenes in Unity with their respective index
-> MainMenu_Scene     0
-> CreatePlayer_Scene 1
-> ViewPlayer_Scene   2
-> OpeningGame_Scene  3
-> Game_Scene         4
+Scene Name | Index
+---------- | -----
+MainMenu_Scene | 0
+CreatePlayer_Scene | 1
+ViewPlayer_Scene | 2
+OpeningGame_Scene | 3
+Game_Scene | 4
