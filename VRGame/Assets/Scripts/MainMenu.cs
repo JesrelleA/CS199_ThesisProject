@@ -18,6 +18,16 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void CreatePlayer() {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Quit() {
+        Debug.Log("QUIT");
+        Application.Quit();
+    }
+
+
     /*
     // Start is called before the first frame update
     void Start()
