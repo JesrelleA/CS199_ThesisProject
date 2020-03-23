@@ -10,7 +10,7 @@
     * https://sudonull.com/post/31981-Using-SQLite-in-Unity-Unity-SQLite
     * Dowload Sqlite admin at http://sqliteadmin.orbmu2k.de/
 
-## Current Scenes in Unity with their respective index
+## Current Scenes in Unity 
 Scene Name | Index
 ---------- | -----
 MainMenu_Scene | 0
