@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CreateNewPlayer : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class CreateNewPlayer : MonoBehaviour
     public InputField lastname;
     public InputField age;
     public InputField sex;
+
+    public void Home() {
+        SceneManager.LoadScene(0);
+    }
+
+
     
 
 
