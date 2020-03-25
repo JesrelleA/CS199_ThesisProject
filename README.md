@@ -1,7 +1,9 @@
 # CS199_ThesisProject
 
 ## Links
-* Gdocs link - https://docs.google.com/document/d/1h05KrjuRXiMc064-1_2H8t1Ror9CV2nGNtu4S_KmJgs/edit?usp=sharing
+* Gdocs link for unity - https://docs.google.com/document/d/1h05KrjuRXiMc064-1_2H8t1Ror9CV2nGNtu4S_KmJgs/edit?usp=sharing
+* Gdocs link for model plan - https://docs.google.com/document/d/1y83jbX8H6e7BtX5M0PfaotMpBh1xUZ3kGSWh514GiYw/edit?usp=sharing
+* Models drive - https://drive.google.com/drive/folders/1PwIduckkFIDAP4DWjx2nfQWt_ipWmYV5?usp=sharing
 * Menu
     * START MENU in Unity - https://youtu.be/kEyE1uh6xUo?t=3cd
     * SETTINGS MENU in Unity - https://youtu.be/YOaYQrN1oYQ?t=1
