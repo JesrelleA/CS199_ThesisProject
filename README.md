@@ -11,6 +11,7 @@
     * http://www.mwmdragon.com/2019/07/15/sqlite-in-unity/
     * https://sudonull.com/post/31981-Using-SQLite-in-Unity-Unity-SQLite
     * Dowload Sqlite admin at http://sqliteadmin.orbmu2k.de/
+* Declaring a text mesh pro gameobject in c# - https://www.reddit.com/r/Unity3D/comments/a2omm9/how_to_add_text_by_script_for_textmesh_pro/
 
 ## Current Scenes in Unity 
 Scene Name | Index
