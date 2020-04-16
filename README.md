@@ -21,3 +21,6 @@ CreatePlayer_Scene | 1
 ViewPlayer_Scene | 2
 OpeningGame_Scene | 3
 Game_Scene | 4
+
+## Notes/Problems
+* In ViewPlayer_scene, the back button in view records must lead back to where it came from e.g. if from view player list, go back to player list; if from view details, go back to view details. But for now, it only goes back to the player list.
