@@ -14,12 +14,6 @@ public class CreateNewPlayer : MonoBehaviour
     public void Home() {
         SceneManager.LoadScene(0);
     }
-
-
-    
-
-
-    
     
     /*
     // Start is called before the first frame update
