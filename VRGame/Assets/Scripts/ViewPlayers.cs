@@ -37,16 +37,16 @@ public class ViewPlayers : MonoBehaviour
     }
 
     public void DisplayNameText() {
-        DisplayName.text = "Name: " + name;
+        DisplayName.text = name;
         Debug.Log("please :("); 
     }
 
     public void DisplayAgeText() {
-        DisplayAge.text = "Age: " + age.ToString();
+        DisplayAge.text = age.ToString();
     }
 
     public void DisplaySexText() {
-        DisplaySex.text = "Sex: " + sex;
+        DisplaySex.text = sex;
     }
 
     public void DisplayRemarksText() {
