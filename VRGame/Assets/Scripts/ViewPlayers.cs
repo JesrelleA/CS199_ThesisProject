@@ -8,7 +8,29 @@ using TMPro;
 public class ViewPlayers : MonoBehaviour
 {
 
-    private int playerTotalNum; 
+    //Sample data 
+    IList list1 = new ArrayList() {
+        "Stephanie Retuya",
+        7,
+        "female"
+    };
+    IList list2 = new ArrayList() {
+        "Jessica Amornkuldilok",
+        9,
+        "female"
+    };
+    IList list3 = new ArrayList() {
+        "Kyle Ma",
+        6,
+        "male"
+    };
+    IDictionary<int, IList> dict = new Dictionary<int, IList>() {
+        {1, list1},
+        {2, list2},
+        {3, list3}
+    };
+
+    private int playerTotalNum = dict.Count; 
     public TextMeshProUGUI DisplayName; 
     public TextMeshProUGUI DisplayAge;
     public TextMeshProUGUI DisplaySex;
@@ -24,13 +46,6 @@ public class ViewPlayers : MonoBehaviour
         DisplaySexText();
         DisplayRemarksText();
     }
-
-    /*public void ViewDetails() {
-        DisplayNameText();
-        DisplayAgeText();
-        DisplaySexText();
-        DisplayRemarksText();
-    }*/
 
     public void Home() {
         SceneManager.LoadScene(0);
