@@ -24,3 +24,4 @@ Game_Scene | 4
 
 ## Notes/Problems
 * In ViewPlayer_scene, the back button in view records must lead back to where it came from e.g. if from view player list, go back to player list; if from view details, go back to view details. But for now, it only goes back to the player list.
+* Inserted scroll view in ViewPlayer_scene. Data not yet realtime (still need to figure out database :( )).
