@@ -11,9 +11,9 @@ public class Database1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string conn = "URI=file:" + Application.dataPath + "/db1.s3db"; //Path to database
+        string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //"/db1.s3db"; //Path to database
 
-        Debug.Log("hi?");
+        //Debug.Log("hi?");
         Debug.Log(conn);
         //Debug.Log("at least??");
         IDbConnection dbconn;
@@ -32,7 +32,7 @@ public class Database1 : MonoBehaviour
             Debug.Log("NOPE :(");
         }
 
-        string sqlQuery = "SELECT Name, Age, Sex, Remarks FROM Players";
+        string sqlQuery = "SELECT * FROM Players;"; //"INSERT INTO Players(Name, Age, Sex, Remarks) VALUES(\"hello2\", 6, \"f\", \"WORKED YAAAY\");"; //"SELECT * FROM Players;"; //"SELECT Name, Age, Sex, Remarks FROM Players";
 
         dbcmd.CommandText = sqlQuery;
         Debug.Log(sqlQuery);
@@ -40,22 +40,28 @@ public class Database1 : MonoBehaviour
 
         Debug.Log("HWEERER");
 
+        
         string playername = "sadsfasfd";
         int age1 = 1;
         string playersex = "f";
         string remarks1 = "sdfg";
-
+    
+        
         while (reader.Read()) {
             Debug.Log("inside while 1");
-            playername = reader.GetString(1);
-            age1 = reader.GetInt32(0);
-            playersex = reader.GetString(1);
-            remarks1 = reader.GetString(1);
+            //Debug.Log(String.Format("{0}", reader[1]));
+            playername = Convert.ToString(reader[1]);//.GetString(1);
+            age1 = Convert.ToInt32(reader[2]);//.GetInt32(0);
+            playersex = Convert.ToString(reader[3]);//.GetString(1);
+            remarks1 = Convert.ToString(reader[4]);//.GetString(1);
+            Debug.Log("Name: " + playername + " Age: " + age1 + " Sex: " + playersex + " Remarks: " + remarks1);
             Debug.Log("inside while 2");
         }
+        
+        //Debug.Log("name=" + playername + " age=" + age1 + " sex=" + playersex + " remarks=" + remarks1);
+        
 
-        Debug.Log("name=" + playername + " age=" + age1 + " sex=" + playersex + " remarks=" + remarks1);
-
+        Debug.Log("before reader close");
         reader.Close();
         reader = null;
         dbcmd.Dispose();
