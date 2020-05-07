@@ -7,17 +7,39 @@ using TMPro;
 
 public class CreateNewPlayer : MonoBehaviour
 {
-    public InputField firstname;
-    public InputField lastname;
-    public InputField age;
-    //public InputField sex;
-    public Toggle male;
-    public Toggle female;
+    public string firstname;
+    private string lastname;
+    private string name;
+    private int age;
+    private string sex;
+    private string remarks;
+    
 
-    public InputField remarks;
+    public InputField firstnameinput;
+    public InputField lastnameinput;
+    public InputField ageinput;
+    //public InputField sex;
+    public Toggle maleinput;
+    public Toggle femaleinput;
+    public InputField remarksinput;
 
     public void Start() {
+        
+    }
 
+    public void Trythis() {
+        //firstname = firstnameinput.text(); //firstnameinput.GetComponent<Text>();
+        //Debug.Log(firstname);
+
+        //var try2 = firstnameinput.GetComponent<Text>();
+        //Debug.Log(try2.text);
+
+        //firstname = firstnameinput.text;
+        firstname = GameObject.Find ("FirstNameInput").GetComponent<InputField>().text;
+        Debug.Log(firstname);
+        lastname = GameObject.Find ("LastNameInput").GetComponent<InputField>().text;
+        name = firstname + " " + lastname;
+        Debug.Log(name);
     }
 
     /*

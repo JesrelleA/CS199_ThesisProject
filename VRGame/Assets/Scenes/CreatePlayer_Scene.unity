@@ -346,7 +346,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 206585382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1654569249}
+        m_MethodName: Trythis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &206585382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,13 +992,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570320119}
   m_TextComponent: {fileID: 5436433}
   m_Placeholder: {fileID: 1651507199}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -3141,12 +3152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b4703c896397144ac703d383b460e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstname: {fileID: 1413852903}
-  lastname: {fileID: 1447622660}
-  age: {fileID: 570320118}
-  male: {fileID: 854078629}
-  female: {fileID: 0}
-  remarks: {fileID: 1690284100}
+  firstname: 
+  firstnameinput: {fileID: 0}
+  lastnameinput: {fileID: 0}
+  ageinput: {fileID: 0}
+  maleinput: {fileID: 0}
+  femaleinput: {fileID: 0}
+  remarksinput: {fileID: 0}
 --- !u!114 &1654569250
 MonoBehaviour:
   m_ObjectHideFlags: 0
