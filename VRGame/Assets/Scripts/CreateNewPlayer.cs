@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
+
 public class CreateNewPlayer : MonoBehaviour
 {
     public string firstname;
@@ -13,37 +17,67 @@ public class CreateNewPlayer : MonoBehaviour
     private int age;
     private string sex;
     private string remarks;
-    
 
-    public InputField firstnameinput;
-    public InputField lastnameinput;
-    public InputField ageinput;
-    //public InputField sex;
-    public Toggle maleinput;
-    public Toggle femaleinput;
-    public InputField remarksinput;
+    Toggle male;
+    Toggle female;
 
     public void Start() {
         
     }
 
     public void Trythis() {
-        //firstname = firstnameinput.text(); //firstnameinput.GetComponent<Text>();
-        //Debug.Log(firstname);
-
-        //var try2 = firstnameinput.GetComponent<Text>();
-        //Debug.Log(try2.text);
-
-        //firstname = firstnameinput.text;
         firstname = GameObject.Find ("FirstNameInput").GetComponent<InputField>().text;
         Debug.Log(firstname);
         lastname = GameObject.Find ("LastNameInput").GetComponent<InputField>().text;
         name = firstname + " " + lastname;
         Debug.Log(name);
+
+        var togglecheck = GameObject.Find ("Male");
+        var toggle2 = GameObject.Find ("Female");
+        //togglecheck.GetComponent<Toggle>().isOn = true;
+        var ismale = togglecheck.GetComponent<Toggle>().isOn;
+
+        Debug.Log(ismale);
+
+        if (togglecheck.GetComponent<Toggle>().isOn) {
+            Debug.Log("male");
+        }
+
+        if (toggle2.GetComponent<Toggle>().isOn) {
+            Debug.Log("female");
+        }
+        
+        
     }
 
-    /*
+    
     public void CreatePlayer() {
+
+        //Get values from input fields
+        //Name
+        firstname = GameObject.Find ("FirstNameInput").GetComponent<InputField>().text;
+        Debug.Log(firstname);
+        lastname = GameObject.Find ("LastNameInput").GetComponent<InputField>().text;
+        name = firstname + " " + lastname;
+
+        //Age
+        string agetemp = GameObject.Find ("AgeInput").GetComponent<InputField>().text;
+        age = Convert.ToInt32(agetemp);
+
+        //Sex
+        var isfemale = GameObject.Find ("Female");
+        var ismale = GameObject.Find ("Male");
+        if (isfemale.GetComponent<Toggle>().isOn == true) {
+            sex = "f";
+        }
+        if (ismale.GetComponent<Toggle>().isOn == true) {
+            sex = "m";
+        }
+
+        //Remarks
+        remarks = GameObject.Find ("RemarksInput").GetComponent<InputField>().text;
+
+        //Connect ot DB
         string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
 
         Debug.Log(conn);
@@ -55,47 +89,32 @@ public class CreateNewPlayer : MonoBehaviour
 
         IDbCommand dbcmd = dbconn.CreateCommand();
 
-        string sqlQuery = "SELECT * FROM Players;"; //"INSERT INTO Players(Name, Age, Sex, Remarks) VALUES(\"hello2\", 6, \"f\", \"WORKED YAAAY\");"; //"SELECT * FROM Players;"; //"SELECT Name, Age, Sex, Remarks FROM Players";
+        //Insert to Players
+        string sqlQuery = "INSERT INTO Players(Name, Age, Sex, Remarks) VALUES (\"" + name + "\", " + age + ", \"" + sex + "\", \"" + remarks + "\");"; //"INSERT INTO Players(Name, Age, Sex, Remarks) VALUES(\"hello2\", 6, \"f\", \"WORKED YAAAY\");"; //"SELECT * FROM Players;"; //"SELECT Name, Age, Sex, Remarks FROM Players";
 
         dbcmd.CommandText = sqlQuery;
         Debug.Log(sqlQuery);
-        IDataReader /*var*/ //reader = dbcmd.ExecuteReader();
+        IDataReader reader = dbcmd.ExecuteReader();
 
-        //Debug.Log("HWEERER");
-
-        
-        /*INSERT TO PLAYERS*/
-        //INSERT INTO Players(Name, Age, Sex, Remarks) 
-        //VALUES
-
-        /*INSERT TO RECORDS*/
-        //INSERT INTO Records (PlayerID, Record, DateRecorded)
-        //VALUES (
-        //(SELECT PlayerID FROM Players ORDER BY PlayerID DESC LIMIT 1),
-        //"No record",
-        //Date('now')
-        //);
-
-        /*
-        string playername = "sadsfasfd";
-        int age1 = 1;
-        string playersex = "f";
-        string remarks1 = "sdfg";
-    
-        while (reader.Read()) {
-            Debug.Log("inside while 1");
-            playername = Convert.ToString(reader[1]);//.GetString(1);
-            age1 = Convert.ToInt32(reader[2]);//.GetInt32(0);
-            playersex = Convert.ToString(reader[3]);//.GetString(1);
-            remarks1 = Convert.ToString(reader[4]);//.GetString(1);
-            Debug.Log("Name: " + playername + " Age: " + age1 + " Sex: " + playersex + " Remarks: " + remarks1);
-            Debug.Log("inside while 2");
-        }
-        */
-        /*
-        Debug.Log("before reader close");
+        //Debug.Log("before reader close");
+        Debug.Log("Inserted to Players");
         reader.Close();
         reader = null;
+
+        //Insert to Records
+        string sqlQuery2 = "INSERT INTO Records (PlayerID, Record, DateRecorded) VALUES ((SELECT PlayerID FROM Players ORDER BY PlayerID DESC LIMIT 1), \"No record\", Date('now'));";
+        dbcmd.CommandText = sqlQuery2;
+        Debug.Log(sqlQuery2);
+        IDataReader reader2 = dbcmd.ExecuteReader();
+
+        //Debug.Log("before reader2 close");
+        Debug.Log("Inserted to Records");
+        reader2.Close();
+        //Debug.Log("after reader2 close");
+        reader2 = null;
+        Debug.Log("after null");
+
+
         dbcmd.Dispose();
         dbcmd = null;
         dbconn.Close();
@@ -103,7 +122,7 @@ public class CreateNewPlayer : MonoBehaviour
         Debug.Log("Fin yaay");
         
     }
-    */
+    
 
     public void Home() {
         SceneManager.LoadScene(0);
