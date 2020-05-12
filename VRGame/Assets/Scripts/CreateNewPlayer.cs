@@ -23,6 +23,8 @@ public class CreateNewPlayer : MonoBehaviour
     public TextMeshProUGUI DisplayValA;
     public TextMeshProUGUI DisplayValS;
     public TextMeshProUGUI DisplayValR;
+    public TextMeshProUGUI Name;
+    public GameObject AfterCreate;
 
     public void Start() {
         
@@ -167,6 +169,10 @@ public class CreateNewPlayer : MonoBehaviour
             dbconn = null;
             Debug.Log("Fin yaay");
 
+            AfterCreateSetActive();
+            Name.text = name;
+            DisplayName(name);
+
         } else {
             Debug.Log("hmmmm");
         }
@@ -175,6 +181,14 @@ public class CreateNewPlayer : MonoBehaviour
         
     }
     
+
+    public void AfterCreateSetActive() {
+        AfterCreate.SetActive(true);
+    }
+
+    public void DisplayName(string name) {
+        Name.text = name;
+    }
 
     public void Home() {
         SceneManager.LoadScene(0);
