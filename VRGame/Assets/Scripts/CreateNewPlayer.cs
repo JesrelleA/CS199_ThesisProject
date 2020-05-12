@@ -30,36 +30,6 @@ public class CreateNewPlayer : MonoBehaviour
     public TextMeshProUGUI DisplayAge;
     public TextMeshProUGUI DisplaySex;
     public TextMeshProUGUI DisplayRemarks;
-
-    public void Start() {
-        
-    }
-
-    public void Trythis() {
-        firstname = GameObject.Find ("FirstNameInput").GetComponent<InputField>().text;
-        Debug.Log(firstname);
-        lastname = GameObject.Find ("LastNameInput").GetComponent<InputField>().text;
-        name = firstname + " " + lastname;
-        Debug.Log(name);
-
-        var togglecheck = GameObject.Find ("Male");
-        var toggle2 = GameObject.Find ("Female");
-        //togglecheck.GetComponent<Toggle>().isOn = true;
-        var ismale = togglecheck.GetComponent<Toggle>().isOn;
-
-        Debug.Log(ismale);
-
-        if (togglecheck.GetComponent<Toggle>().isOn) {
-            Debug.Log("male");
-        }
-
-        if (toggle2.GetComponent<Toggle>().isOn) {
-            Debug.Log("female");
-        }
-        
-        
-    }
-
     
     public void CreatePlayer() {
         
@@ -175,15 +145,7 @@ public class CreateNewPlayer : MonoBehaviour
             Debug.Log("Fin yaay");
 
             AfterCreateSetActive();
-            
-            
-
-        } else {
-            Debug.Log("hmmmm");
         }
-
-        
-        
     }
     
 
@@ -205,5 +167,8 @@ public class CreateNewPlayer : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     
+    public void OpeningGameScene() {
+        SceneManager.LoadScene(3);
+    }
 
 }
