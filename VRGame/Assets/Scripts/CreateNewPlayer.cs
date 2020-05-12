@@ -23,8 +23,13 @@ public class CreateNewPlayer : MonoBehaviour
     public TextMeshProUGUI DisplayValA;
     public TextMeshProUGUI DisplayValS;
     public TextMeshProUGUI DisplayValR;
-    public TextMeshProUGUI Name;
+    
+    
     public GameObject AfterCreate;
+    public TextMeshProUGUI DisplayName;
+    public TextMeshProUGUI DisplayAge;
+    public TextMeshProUGUI DisplaySex;
+    public TextMeshProUGUI DisplayRemarks;
 
     public void Start() {
         
@@ -170,8 +175,8 @@ public class CreateNewPlayer : MonoBehaviour
             Debug.Log("Fin yaay");
 
             AfterCreateSetActive();
-            Name.text = name;
-            DisplayName(name);
+            
+            
 
         } else {
             Debug.Log("hmmmm");
@@ -184,11 +189,17 @@ public class CreateNewPlayer : MonoBehaviour
 
     public void AfterCreateSetActive() {
         AfterCreate.SetActive(true);
+
+        DisplayName.text = name;
+        DisplayAge.text = Convert.ToString(age);
+        if (sex == "f") {
+            DisplaySex.text = "female";
+        } else {
+            DisplaySex.text = "male";
+        }
+        DisplayRemarks.text = remarks;
     }
 
-    public void DisplayName(string name) {
-        Name.text = name;
-    }
 
     public void Home() {
         SceneManager.LoadScene(0);
