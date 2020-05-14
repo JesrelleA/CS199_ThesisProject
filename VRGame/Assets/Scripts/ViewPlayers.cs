@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
+
 public class ViewPlayers : MonoBehaviour
 {
 
@@ -12,59 +16,79 @@ public class ViewPlayers : MonoBehaviour
     ArrayList list1 = new ArrayList();
     ArrayList list2 = new ArrayList();
     ArrayList list3 = new ArrayList();
-    /*Dictionary<int, ArrayList> dict1 = new Dictionary<int, ArrayList>(){
-        {1, list1},
-        {2, list2},
-        {3, list3}
-    };*/
-    /*
-    IDictionary<int, IList> dict = new Dictionary<int, IList>() {
-        {1, list1},
-        {2, list2},
-        {3, list3}
-    };
-    */
-
-    //private int playerTotalNum = dict.Count; 
+    Dictionary<int, ArrayList> playerdictionary = new Dictionary<int, ArrayList>();
+    
     public TextMeshProUGUI DisplayName; 
     public TextMeshProUGUI DisplayAge;
     public TextMeshProUGUI DisplaySex;
     public TextMeshProUGUI DisplayRemarks;
+    
+    private int id;
     private string name = "Helena";
     private int age = 8;
     private string sex = "female";
     private string remarks = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-    /*static void Main(string[] args)
-    {
-            //Console.WriteLine("Hello World!");
-            /*list1.Add("Stephanie Retuya");
-            list1.Add(7);
-            list1.Add("f");*/
-    //}
+    public GameObject PlayersPrefab;
 
-    void Start(/*string[] args*/) {
+    void Start() {
+        
+        GetPlayers();
+        Debug.Log(playerdictionary.Count);
 
-        list1.Add("Stephanie Retuya");
-        list1.Add(7);
-        list1.Add("f");
+        for (int i=1; i<playerdictionary.Count+1; i++) {
+            GameObject NewPlayers = Instantiate<GameObject>(PlayersPrefab, transform);
+            DisplayName.text = Convert.ToString(playerdictionary[i][0]);
+        }
 
-        list2.Add("Jessica Amornkuldilok");
-        list2.Add(8);
-        list2.Add("f");
+    
+        //DisplayNameText();
+        //DisplayAgeText();
+        //DisplaySexText();
+        //DisplayRemarksText();
+    }
 
-        list3.Add("Kyle Ma");
-        list3.Add(6);
-        list3.Add("m");
+    public void GetPlayers() {
+        string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
 
-        //dict1.Add(new KeyValuePair<int, ArrayList>(1, list1));
-        //dict1.Add(new KeyValuePair<int, ArrayList>(2, list2));
-        //dict1.Add(new KeyValuePair<int, ArrayList>(3, list3));
+        Debug.Log(conn);
+        IDbConnection dbconn;
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        Debug.Log("new sqlite conn");
+        dbconn.Open(); //Open connection to database
+        Debug.Log("db open");
 
-        DisplayNameText();
-        DisplayAgeText();
-        DisplaySexText();
-        DisplayRemarksText();
+        IDbCommand dbcmd = dbconn.CreateCommand();
+
+        //query
+        string sqlQuery = "SELECT * FROM Players";
+
+        dbcmd.CommandText = sqlQuery;
+        Debug.Log(sqlQuery);
+        IDataReader reader = dbcmd.ExecuteReader();
+
+        while (reader.Read()) {
+            int tempid = reader.GetInt32(0);
+            string tempname = reader.GetString(1);
+            int tempage = reader.GetInt32(2);
+            string tempsex = reader.GetString(3);
+            string tempremarks = reader.GetString(4);
+
+            ArrayList details = new ArrayList();
+            details.Add(tempname);
+            details.Add(tempage);
+            details.Add(tempsex);
+            details.Add(tempremarks);
+
+            playerdictionary.Add(tempid, details);
+
+
+            //Debug.Log(name);
+        }
+
+        reader.Close();
+        reader = null;
+
     }
 
     public void Home() {
