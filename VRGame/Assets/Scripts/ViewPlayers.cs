@@ -12,40 +12,32 @@ using System;
 public class ViewPlayers : MonoBehaviour
 {
 
-    //Sample data 
-    ArrayList list1 = new ArrayList();
-    ArrayList list2 = new ArrayList();
-    ArrayList list3 = new ArrayList();
     Dictionary<int, ArrayList> playerdictionary = new Dictionary<int, ArrayList>();
     
+
     public TextMeshProUGUI DisplayName; 
     public TextMeshProUGUI DisplayAge;
     public TextMeshProUGUI DisplaySex;
     public TextMeshProUGUI DisplayRemarks;
+    public TextMeshProUGUI Test;
     
     private int id;
-    private string name = "Helena";
-    private int age = 8;
-    private string sex = "female";
-    private string remarks = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+    private string name;
+    private int age;
+    private string sex;
+    private string remarks;
 
     public GameObject PlayersPrefab;
 
     void Start() {
         
         GetPlayers();
-        Debug.Log(playerdictionary.Count);
 
-        for (int i=1; i<playerdictionary.Count+1; i++) {
-            GameObject NewPlayers = Instantiate<GameObject>(PlayersPrefab, transform);
+        for (int i=1; i<playerdictionary.Count+1; i++) { 
             DisplayName.text = Convert.ToString(playerdictionary[i][0]);
+            GameObject NewPlayers = Instantiate<GameObject>(PlayersPrefab, transform);
+            
         }
-
-    
-        //DisplayNameText();
-        //DisplayAgeText();
-        //DisplaySexText();
-        //DisplayRemarksText();
     }
 
     public void GetPlayers() {
@@ -54,9 +46,7 @@ public class ViewPlayers : MonoBehaviour
         Debug.Log(conn);
         IDbConnection dbconn;
         dbconn = (IDbConnection)new SqliteConnection(conn);
-        Debug.Log("new sqlite conn");
         dbconn.Open(); //Open connection to database
-        Debug.Log("db open");
 
         IDbCommand dbcmd = dbconn.CreateCommand();
 
@@ -64,7 +54,6 @@ public class ViewPlayers : MonoBehaviour
         string sqlQuery = "SELECT * FROM Players";
 
         dbcmd.CommandText = sqlQuery;
-        Debug.Log(sqlQuery);
         IDataReader reader = dbcmd.ExecuteReader();
 
         while (reader.Read()) {
@@ -81,9 +70,6 @@ public class ViewPlayers : MonoBehaviour
             details.Add(tempremarks);
 
             playerdictionary.Add(tempid, details);
-
-
-            //Debug.Log(name);
         }
 
         reader.Close();
@@ -95,10 +81,8 @@ public class ViewPlayers : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void DisplayNameText() {
-        DisplayName.text = name;
-        Debug.Log("please :("); 
-    }
+    /*
+
 
     public void DisplayAgeText() {
         DisplayAge.text = age.ToString();
@@ -110,19 +94,6 @@ public class ViewPlayers : MonoBehaviour
 
     public void DisplayRemarksText() {
         DisplayRemarks.text = remarks;
-    }
-
-    /*
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     */
 }
