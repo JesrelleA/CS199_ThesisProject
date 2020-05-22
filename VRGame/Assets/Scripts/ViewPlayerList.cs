@@ -7,8 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 
+using Mono.Data.Sqlite;
+using System.Data;
+
 [System.Serializable]
 public class Player {
+    public int id;
     public string name;
 }
 
@@ -20,7 +24,9 @@ public class ViewPlayerList : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        RefreshDisplay();
+        AddPlayer();
+        //RefreshDisplay();
+        Debug.Log(playerlist.Count);
     }
 
     public void RefreshDisplay() {
@@ -36,5 +42,37 @@ public class ViewPlayerList : MonoBehaviour
             SampleButton sampleButton = newButton.GetComponent<SampleButton>();
             sampleButton.Setup(player, this);
         }
+    }
+
+    private void AddPlayer(/*Player playerToAdd, ViewPlayerList viewList*/) {
+        //viewList.playerlist.Add(playerToAdd);
+        //add here connection to database
+
+        string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
+
+        Debug.Log(conn);
+        IDbConnection dbconn;
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        dbconn.Open(); //Open connection to database
+
+        IDbCommand dbcmd = dbconn.CreateCommand();
+
+        //query
+        string sqlQuery = "SELECT PlayerID, Name FROM Players";
+
+        dbcmd.CommandText = sqlQuery;
+        IDataReader reader = dbcmd.ExecuteReader();
+
+        while (reader.Read()) {
+            Player addthisplayer = new Player();
+            addthisplayer.id = reader.GetInt32(0);
+            addthisplayer.name = reader.GetString(1);
+            //Debug.Log(addthisplayer.name);
+            playerlist.Add(addthisplayer);
+        } 
+
+
+        reader.Close();
+        reader = null;
     }
 }
