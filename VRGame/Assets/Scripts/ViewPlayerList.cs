@@ -25,8 +25,8 @@ public class ViewPlayerList : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         AddPlayer();
-        //RefreshDisplay();
-        Debug.Log(playerlist.Count);
+        RefreshDisplay();
+        //Debug.Log(playerlist.Count);
     }
 
     public void RefreshDisplay() {
