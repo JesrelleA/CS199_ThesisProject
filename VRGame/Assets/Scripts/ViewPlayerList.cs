@@ -18,6 +18,7 @@ public class Player {
 
 public class ViewPlayerList : MonoBehaviour
 {
+    public static int session;
     public List<Player> playerlist;
     public Transform contentPanel;
     public SimpleObjectPool buttonObjectPool;

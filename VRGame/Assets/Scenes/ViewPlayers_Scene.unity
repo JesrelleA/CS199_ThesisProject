@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 1371893515}
   m_VerticalScrollbar: {fileID: 552638058}
   m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -12103,6 +12103,21 @@ PrefabInstance:
       propertyPath: Name
       value: 
       objectReference: {fileID: 878767393}
+    - target: {fileID: -4164293944934168132, guid: 3dc85583e42c4f04792c3f2c220a19e0,
+        type: 3}
+      propertyPath: PlayerDetails
+      value: 
+      objectReference: {fileID: 1356259123}
+    - target: {fileID: -4164293944934168132, guid: 3dc85583e42c4f04792c3f2c220a19e0,
+        type: 3}
+      propertyPath: ViewPlayers
+      value: 
+      objectReference: {fileID: 309939757}
+    - target: {fileID: -4164293944934168132, guid: 3dc85583e42c4f04792c3f2c220a19e0,
+        type: 3}
+      propertyPath: SceneTitle
+      value: 
+      objectReference: {fileID: 1194963822}
     - target: {fileID: 8508775975156102584, guid: 3dc85583e42c4f04792c3f2c220a19e0,
         type: 3}
       propertyPath: m_textInfo.characterCount
