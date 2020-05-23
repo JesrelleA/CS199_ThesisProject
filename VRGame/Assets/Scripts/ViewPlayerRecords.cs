@@ -19,6 +19,9 @@ public class ViewPlayerRecords : MonoBehaviour
     public Button Backbtn;
     public TextMeshProUGUI DisplayName;
     public TextMeshProUGUI DisplayRecords;
+
+    public GameObject PlayerDetails;
+    public GameObject ViewRecords;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,8 @@ public class ViewPlayerRecords : MonoBehaviour
         GetRecords();
         DisplayName.text = name;
         DisplayRecords.text = records;
+
+        Backbtn.onClick.AddListener(HandleBackBtnClick);
     }
 
     private void GetRecords() {
@@ -55,5 +60,10 @@ public class ViewPlayerRecords : MonoBehaviour
 
         reader.Close();
         reader = null;
+    }
+
+    private void HandleBackBtnClick() {
+        ViewRecords.SetActive(false);
+        PlayerDetails.SetActive(true);
     }
 }
