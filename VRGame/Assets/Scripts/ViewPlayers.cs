@@ -4,39 +4,54 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.Linq;
 
 public class ViewPlayers : MonoBehaviour
 {
 
-    Dictionary<int, ArrayList> playerdictionary = new Dictionary<int, ArrayList>();
-    
-
-    public TextMeshProUGUI DisplayName; 
-    public TextMeshProUGUI DisplayAge;
-    public TextMeshProUGUI DisplaySex;
-    public TextMeshProUGUI DisplayRemarks;
-    public TextMeshProUGUI Test;
-    
+    public static int session;
+    private int tempid;
     private int id;
     private string name;
     private int age;
     private string sex;
     private string remarks;
-
+    
     public GameObject PlayersPrefab;
+    //public Button ViewDetailsButton;
+    //public Button ViewRecordsButton;
+    //public Button EditDetailsButton;
+    //public Button PlayButton;
+    public Button TestButton;
+    public TextMeshProUGUI DisplayName; 
+    public TextMeshProUGUI DisplayAge;
+    public TextMeshProUGUI DisplaySex;
+    public TextMeshProUGUI DisplayRemarks;
+
+    Dictionary<int, ArrayList> playerdictionary = new Dictionary<int, ArrayList>();
 
     void Start() {
+
+        //TestButton.onClick.AddListener(() => ViewDetails());
         
         GetPlayers();
 
+        int j = 0;
         for (int i=1; i<playerdictionary.Count+1; i++) { 
             DisplayName.text = Convert.ToString(playerdictionary[i][0]);
-            GameObject NewPlayers = Instantiate<GameObject>(PlayersPrefab, transform);
-            
+            id = playerdictionary.Keys.ElementAt(j);
+            tempid = id;
+            //Debug.Log(id);
+            j++;
+            TestButton.onClick.AddListener(() => ViewDetails());
+            //ViewDetailsButton.onClick.AddListener(ViewDetails);
+            //m_YourSecondButton.onClick.AddListener(delegate {TaskWithParameters("Hello"); });
+            //ViewDetailsButton.onClick.AddListener(delegate {ViewDetails(); });
+            //ViewDetailsButton.onClick.AddListener(() => ViewDetails());
+            GameObject NewPlayers = Instantiate<GameObject>(PlayersPrefab, transform); 
         }
     }
 
@@ -80,6 +95,13 @@ public class ViewPlayers : MonoBehaviour
     public void Home() {
         SceneManager.LoadScene(0);
     }
+
+    public void ViewDetails() {
+        //Debug.Log(id);
+        //Debug.Log(tempid);
+        Debug.Log("inside view details");
+    }
+
 
     /*
 

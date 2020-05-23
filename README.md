@@ -14,6 +14,7 @@
 * Declaring a text mesh pro gameobject in c# - https://www.reddit.com/r/Unity3D/comments/a2omm9/how_to_add_text_by_script_for_textmesh_pro/
 * Accesing data from input field - https://learntocreategames.com/adding-and-managing-an-input-field/
 * Scroll - https://youtu.be/KMGNZZo0dkE?t=909 
+* Scroll 2 - https://learn.unity.com/tutorial/live-training-shop-ui-with-runtime-scroll-lists#5c7f8528edbc2a002053b4cd 
 
 ## Current Scenes in Unity 
 Scene Name | Index
