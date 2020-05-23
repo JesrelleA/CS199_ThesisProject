@@ -23,11 +23,16 @@ public class ViewPlayerList : MonoBehaviour
     public Transform contentPanel;
     public SimpleObjectPool buttonObjectPool;
 
+    public TextMeshProUGUI SceneTitle;
+
     // Start is called before the first frame update
     void Start() {
+        session = 0;
+        SceneTitle.text = "Player List";
         AddPlayer();
-        RefreshDisplay();
+        //RefreshDisplay();
         //Debug.Log(playerlist.Count);
+        AddButtons();
     }
 
     public void RefreshDisplay() {
@@ -35,6 +40,7 @@ public class ViewPlayerList : MonoBehaviour
     }
 
     private void AddButtons() {
+        SceneTitle.text = "Player List";
         for (int i = 0; i < playerlist.Count; i++) {
             Player player = playerlist[i];
             GameObject newButton = buttonObjectPool.GetObject ();
@@ -46,9 +52,6 @@ public class ViewPlayerList : MonoBehaviour
     }
 
     private void AddPlayer(/*Player playerToAdd, ViewPlayerList viewList*/) {
-        //viewList.playerlist.Add(playerToAdd);
-        //add here connection to database
-
         string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
 
         Debug.Log(conn);
@@ -71,7 +74,6 @@ public class ViewPlayerList : MonoBehaviour
             //Debug.Log(addthisplayer.name);
             playerlist.Add(addthisplayer);
         } 
-
 
         reader.Close();
         reader = null;

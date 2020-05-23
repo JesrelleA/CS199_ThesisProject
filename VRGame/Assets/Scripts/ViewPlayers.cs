@@ -37,8 +37,9 @@ public class ViewPlayers : MonoBehaviour
 
         //TestButton.onClick.AddListener(() => ViewDetails());
         
-        GetPlayers();
+        //GetPlayers();
 
+        /*
         int j = 0;
         for (int i=1; i<playerdictionary.Count+1; i++) { 
             DisplayName.text = Convert.ToString(playerdictionary[i][0]);
@@ -53,6 +54,7 @@ public class ViewPlayers : MonoBehaviour
             //ViewDetailsButton.onClick.AddListener(() => ViewDetails());
             GameObject NewPlayers = Instantiate<GameObject>(PlayersPrefab, transform); 
         }
+        */
     }
 
     public void GetPlayers() {
