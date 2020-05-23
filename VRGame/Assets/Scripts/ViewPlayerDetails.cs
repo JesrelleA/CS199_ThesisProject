@@ -30,6 +30,7 @@ public class ViewPlayerDetails : MonoBehaviour
 
     public GameObject ViewPlayers;
     public GameObject PlayerDetails;
+    public GameObject ViewRecords;
 
 
 
@@ -47,6 +48,7 @@ public class ViewPlayerDetails : MonoBehaviour
         DisplayRemarks.text = remarks;
         Debug.Log(remarks);
 
+        ViewRecordsBtn.onClick.AddListener(HandleViewRecordsBtnClick);
         BackBtn.onClick.AddListener(HandleBackBtnClick);
     }
 
@@ -84,6 +86,11 @@ public class ViewPlayerDetails : MonoBehaviour
 
         reader.Close();
         reader = null;
+    }
+
+    private void HandleViewRecordsBtnClick() {
+        PlayerDetails.SetActive(false);
+        ViewRecords.SetActive(true);
     }
 
     private void HandleBackBtnClick() {
