@@ -12,7 +12,6 @@ public class SampleButton : MonoBehaviour
     
     public Button Buttonobj;
     public TextMeshProUGUI Name;
-    //public TextMeshProUGUI SceneTitle;
     public GameObject PlayerDetails;
     public GameObject ViewPlayers;
     
@@ -32,11 +31,9 @@ public class SampleButton : MonoBehaviour
     public void HandleClick() { //must go to a view where player details, edit details button, view records button, play button and back button is displayed
         ViewPlayerList.session = player.id;
         Debug.Log(ViewPlayerList.session);
-        //Debug.Log(player.id);
 
         PlayerDetails.SetActive(true);
         ViewPlayers.SetActive(false);
-        //SceneTitle.text = player.name;
     }
 
 }

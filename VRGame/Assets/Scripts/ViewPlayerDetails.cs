@@ -28,8 +28,10 @@ public class ViewPlayerDetails : MonoBehaviour
     public Button PlayBtn;
     public Button BackBtn;
 
+    public GameObject Image; 
     public GameObject ViewPlayers;
     public GameObject PlayerDetails;
+    public GameObject EditDetails;
     public GameObject ViewRecords;
 
 
@@ -38,7 +40,14 @@ public class ViewPlayerDetails : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Image.SetActive(true);
+        if (Image.active) {
+            Debug.Log("active naman");
+        } else {
+            Debug.Log("anyare");
+        }
         GetPlayerDetails(); 
+        Image.SetActive(true);
         DisplayName.text = name;
         Debug.Log(name);
         DisplayAge.text = Convert.ToString(age);
@@ -48,8 +57,10 @@ public class ViewPlayerDetails : MonoBehaviour
         DisplayRemarks.text = remarks;
         Debug.Log(remarks);
 
+        EditDetailsBtn.onClick.AddListener(HandleEditDetailsBtn);
         ViewRecordsBtn.onClick.AddListener(HandleViewRecordsBtnClick);
         BackBtn.onClick.AddListener(HandleBackBtnClick);
+        Image.SetActive(true);
     }
 
     private void GetPlayerDetails() {
@@ -88,6 +99,16 @@ public class ViewPlayerDetails : MonoBehaviour
         reader = null;
     }
 
+    private void HandleEditDetailsBtn() {
+        Image.SetActive(false);
+        PlayerDetails.SetActive(false);
+        EditDetails.SetActive(true); 
+    }
+
+    private void HandlePlayBtn() {
+
+    }
+
     private void HandleViewRecordsBtnClick() {
         PlayerDetails.SetActive(false);
         ViewRecords.SetActive(true);
@@ -95,8 +116,6 @@ public class ViewPlayerDetails : MonoBehaviour
 
     private void HandleBackBtnClick() {
         Debug.Log("back button clicked");
-        //PlayerDetails.SetActive(false);
-        //ViewPlayers.SetActive(true);
         SceneManager.LoadScene(2);
     }
 }
