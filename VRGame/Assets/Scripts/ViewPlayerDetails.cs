@@ -12,7 +12,7 @@ using System.Data;
 
 public class ViewPlayerDetails : MonoBehaviour
 {
-    //private Player player;
+    private int id;
     private string name;
     private int age;
     private string sex;
@@ -34,18 +34,9 @@ public class ViewPlayerDetails : MonoBehaviour
     public GameObject EditDetails;
     public GameObject ViewRecords;
 
-
-
-    
     // Start is called before the first frame update
     void Start()
     {
-        Image.SetActive(true);
-        if (Image.active) {
-            Debug.Log("active naman");
-        } else {
-            Debug.Log("anyare");
-        }
         GetPlayerDetails(); 
         Image.SetActive(true);
         DisplayName.text = name;
@@ -64,7 +55,7 @@ public class ViewPlayerDetails : MonoBehaviour
     }
 
     private void GetPlayerDetails() {
-        int id = ViewPlayerList.session;
+        id = ViewPlayerList.session;
         Debug.Log(id);
 
         //Get other data from database
@@ -78,7 +69,7 @@ public class ViewPlayerDetails : MonoBehaviour
 
         //query
         string sqlQuery = "SELECT Name, Age, Sex, Remarks FROM Players WHERE PlayerID = " + id;
-        Debug.Log(sqlQuery);
+        //Debug.Log(sqlQuery);
 
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
@@ -86,8 +77,8 @@ public class ViewPlayerDetails : MonoBehaviour
         while (reader.Read()) {
             name = reader.GetString(0);
             age = reader.GetInt32(1);
-            string tempage = reader.GetString(2);
-            if (tempage == "f") {
+            string tempsex = reader.GetString(2);
+            if (tempsex == "f") {
                 sex = "female";
             } else {
                 sex = "male";
@@ -115,7 +106,6 @@ public class ViewPlayerDetails : MonoBehaviour
     }
 
     private void HandleBackBtnClick() {
-        Debug.Log("back button clicked");
         SceneManager.LoadScene(2);
     }
 }

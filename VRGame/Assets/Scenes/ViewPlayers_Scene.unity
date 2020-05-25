@@ -2660,7 +2660,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 53845611}
   m_HandleRect: {fileID: 53845610}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5532,7 +5532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 206.5}
+  m_AnchoredPosition: {x: -300, y: 206.5}
   m_SizeDelta: {x: 584, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1238499645
@@ -7584,29 +7584,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1698121183}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1950509314}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1356259123}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1698121183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8477,6 +8455,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd8c8c27db31d646932b2a6f98fd20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FirstNameInput: {fileID: 210816783}
+  LastNameInput: {fileID: 1436108468}
+  AgeInput: {fileID: 1871546321}
+  FemaleToggle: {fileID: 1778968288}
+  MaleToggle: {fileID: 1344272553}
+  RemarksInput: {fileID: 276897610}
   DisplayValFN: {fileID: 519355286}
   DisplayValLN: {fileID: 534793266}
   DisplayValA: {fileID: 1176414134}
