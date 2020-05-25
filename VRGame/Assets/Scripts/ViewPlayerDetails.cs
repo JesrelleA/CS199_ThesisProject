@@ -39,24 +39,20 @@ public class ViewPlayerDetails : MonoBehaviour
     {
         GetPlayerDetails(); 
         Image.SetActive(true);
-        DisplayName.text = name;
-        Debug.Log(name);
-        DisplayAge.text = Convert.ToString(age);
-        Debug.Log(age);
-        DisplaySex.text = sex;
-        Debug.Log(sex);
-        DisplayRemarks.text = remarks;
-        Debug.Log(remarks);
+        DisplayPlayerDetails();
 
         EditDetailsBtn.onClick.AddListener(HandleEditDetailsBtn);
         ViewRecordsBtn.onClick.AddListener(HandleViewRecordsBtnClick);
         BackBtn.onClick.AddListener(HandleBackBtnClick);
-        Image.SetActive(true);
     }
 
-    private void GetPlayerDetails() {
+    void Update() {
+        GetPlayerDetails();
+        DisplayPlayerDetails();
+    }
+
+    public void GetPlayerDetails() {
         id = ViewPlayerList.session;
-        Debug.Log(id);
 
         //Get other data from database
         string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
@@ -88,6 +84,13 @@ public class ViewPlayerDetails : MonoBehaviour
 
         reader.Close();
         reader = null;
+    }
+
+    public void DisplayPlayerDetails() {
+        DisplayName.text = name;
+        DisplayAge.text = Convert.ToString(age);
+        DisplaySex.text = sex;
+        DisplayRemarks.text = remarks;
     }
 
     private void HandleEditDetailsBtn() {

@@ -24,7 +24,6 @@ public class CreateNewPlayer : MonoBehaviour
     public TextMeshProUGUI DisplayValS;
     public TextMeshProUGUI DisplayValR;
     
-    
     public GameObject AfterCreate;
     public TextMeshProUGUI DisplayName;
     public TextMeshProUGUI DisplayAge;

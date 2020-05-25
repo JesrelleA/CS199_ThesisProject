@@ -5532,7 +5532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 206.5}
+  m_AnchoredPosition: {x: -300, y: 206.50002}
   m_SizeDelta: {x: 584, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1238499645
@@ -5985,7 +5985,7 @@ MonoBehaviour:
   DisplayName: {fileID: 1194963822}
   DisplayAge: {fileID: 802858349}
   DisplaySex: {fileID: 42292928}
-  DisplayRemarks: {fileID: 1080583450}
+  DisplayRemarks: {fileID: 950663894}
   EditDetailsBtn: {fileID: 431240422}
   ViewRecordsBtn: {fileID: 299460067}
   PlayBtn: {fileID: 1076317479}
