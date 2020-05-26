@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
 using TMPro;
@@ -76,5 +77,9 @@ public class ViewPlayerList : MonoBehaviour
 
         reader.Close();
         reader = null;
+    }
+
+    public void Home() {
+        SceneManager.LoadScene(0);
     }
 }
