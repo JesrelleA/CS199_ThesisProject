@@ -209,21 +209,6 @@ public class EditPlayerDetails : MonoBehaviour
             //insert a gameobject text: "Player details saved"
             EditDetails.SetActive(false);
             Image.SetActive(true);
-            //viewPlayerDetails = FindObjectOfType<ViewPlayerDetails>();
-            //viewPlayerDetails.DisplayPlayerDetails();
-            //viewPlayerDetails.GetComponent<ViewPlayerDetails>.DisplayPlayerDetails();
-            //viewPlayerDetails = gameObject.GetComponent<ViewPlayerDetails>();
-            //viewPlayerDetails.GetPlayerDetails();
-            //viewPlayerDetails.DisplayPlayerDetails();
-            //GameManager gameMananger = GameObject.Find("GameManager").GetComponent<GameManager>();
-            //ViewPlayerDetails viewPlayerDetails = GameObject.Find("ViewPlayerDetails").GetComponent<ViewPlayerDetails>();
-            
-            int updateit = 1;
-            //playerDetailsview.GetPlayerDetails();
-            //playerDetailsview.updatedetails = updateit;
-            
-            //viewdetails.updatedetails = 1;
-            //viewdetails.GetPlayerDetails();
             PlayerDetails.SetActive(true);
             
         }

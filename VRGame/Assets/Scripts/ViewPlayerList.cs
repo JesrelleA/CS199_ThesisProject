@@ -30,12 +30,6 @@ public class ViewPlayerList : MonoBehaviour
         session = 0;
         SceneTitle.text = "Player List";
         AddPlayer();
-        //RefreshDisplay();
-        //Debug.Log(playerlist.Count);
-        AddButtons();
-    }
-
-    public void RefreshDisplay() {
         AddButtons();
     }
 
@@ -51,7 +45,7 @@ public class ViewPlayerList : MonoBehaviour
         }
     }
 
-    private void AddPlayer(/*Player playerToAdd, ViewPlayerList viewList*/) {
+    private void AddPlayer() {
         string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
 
         Debug.Log(conn);
@@ -71,7 +65,6 @@ public class ViewPlayerList : MonoBehaviour
             Player addthisplayer = new Player();
             addthisplayer.id = reader.GetInt32(0);
             addthisplayer.name = reader.GetString(1);
-            //Debug.Log(addthisplayer.name);
             playerlist.Add(addthisplayer);
         } 
 

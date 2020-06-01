@@ -148,7 +148,7 @@ public class CreateNewPlayer : MonoBehaviour
     }
     
 
-    public void AfterCreateSetActive() {
+    private void AfterCreateSetActive() {
         AfterCreate.SetActive(true);
 
         DisplayName.text = name;

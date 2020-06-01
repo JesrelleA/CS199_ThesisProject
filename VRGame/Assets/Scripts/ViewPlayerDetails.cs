@@ -41,7 +41,7 @@ public class ViewPlayerDetails : MonoBehaviour
         Image.SetActive(true);
         DisplayPlayerDetails();
 
-        EditDetailsBtn.onClick.AddListener(HandleEditDetailsBtn);
+        EditDetailsBtn.onClick.AddListener(HandleEditDetailsBtnClick);
         ViewRecordsBtn.onClick.AddListener(HandleViewRecordsBtnClick);
         BackBtn.onClick.AddListener(HandleBackBtnClick);
     }
@@ -93,20 +93,21 @@ public class ViewPlayerDetails : MonoBehaviour
         DisplayRemarks.text = remarks;
     }
 
-    private void HandleEditDetailsBtn() {
+    private void HandleEditDetailsBtnClick() {
         Image.SetActive(false);
         PlayerDetails.SetActive(false);
         EditDetails.SetActive(true); 
-    }
-
-    private void HandlePlayBtn() {
-
     }
 
     private void HandleViewRecordsBtnClick() {
         PlayerDetails.SetActive(false);
         ViewRecords.SetActive(true);
     }
+
+    private void HandlePlayBtn() {
+
+    }
+
 
     private void HandleBackBtnClick() {
         SceneManager.LoadScene(2);
