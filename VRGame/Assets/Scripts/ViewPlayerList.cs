@@ -28,13 +28,13 @@ public class ViewPlayerList : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         session = 0;
-        SceneTitle.text = "Player List";
+        SceneTitle.text = "Players";
         AddPlayer();
         AddButtons();
     }
 
     private void AddButtons() {
-        SceneTitle.text = "Player List";
+        SceneTitle.text = "Players";
         for (int i = 0; i < playerlist.Count; i++) {
             Player player = playerlist[i];
             GameObject newButton = buttonObjectPool.GetObject ();
