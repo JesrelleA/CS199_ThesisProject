@@ -18,7 +18,7 @@ public class ViewPlayerDetails : MonoBehaviour
     private string sex;
     private string remarks;
     
-    public TextMeshProUGUI DisplayName;
+    public Text DisplayName;
     public TextMeshProUGUI DisplayAge;
     public TextMeshProUGUI DisplaySex;
     public TextMeshProUGUI DisplayRemarks;

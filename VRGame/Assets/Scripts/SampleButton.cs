@@ -11,7 +11,7 @@ public class SampleButton : MonoBehaviour
     private ViewPlayerList playerList;
     
     public Button Buttonobj;
-    public TextMeshProUGUI Name;
+    public Text Name;
     public GameObject PlayerDetails;
     public GameObject ViewPlayers;
     
