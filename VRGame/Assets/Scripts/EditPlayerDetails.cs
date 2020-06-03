@@ -30,11 +30,11 @@ public class EditPlayerDetails : MonoBehaviour
     public InputField RemarksInput;
 
 
-    public TextMeshProUGUI DisplayValFN;
-    public TextMeshProUGUI DisplayValLN;
-    public TextMeshProUGUI DisplayValA;
-    public TextMeshProUGUI DisplayValS;
-    public TextMeshProUGUI DisplayValR;
+    public Text DisplayValFN;
+    public Text DisplayValLN;
+    public Text DisplayValA;
+    public Text DisplayValS;
+    public Text DisplayValR;
     
     public Button CancelBtn;
     public Button SaveBtn;
