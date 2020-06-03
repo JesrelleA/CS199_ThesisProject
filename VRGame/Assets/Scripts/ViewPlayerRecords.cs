@@ -18,7 +18,7 @@ public class ViewPlayerRecords : MonoBehaviour
 
     public Button Backbtn;
     public Text DisplayName;
-    public TextMeshProUGUI DisplayRecords;
+    public Text DisplayRecords;
 
     public GameObject PlayerDetails;
     public GameObject ViewRecords;
