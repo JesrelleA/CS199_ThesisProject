@@ -27,4 +27,7 @@ OpeningGame_Scene | 3
 Game_Scene | 4
 
 ## Notes/Problems
-* View Players scene display all the saved players but buttons are not yet working.
+* Button generator 
+    * Border - 4
+    * Corner Radius - 43
+    * Size - fixed; 200 x 100

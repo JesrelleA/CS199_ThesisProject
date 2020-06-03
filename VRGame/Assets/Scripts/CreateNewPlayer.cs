@@ -18,17 +18,19 @@ public class CreateNewPlayer : MonoBehaviour
     private string sex;
     private string remarks;
 
-    public TextMeshProUGUI DisplayValFN;
-    public TextMeshProUGUI DisplayValLN;
-    public TextMeshProUGUI DisplayValA;
-    public TextMeshProUGUI DisplayValS;
-    public TextMeshProUGUI DisplayValR;
+    public Text DisplayValFN;
+    public Text DisplayValLN;
+    public Text DisplayValA;
+    public Text DisplayValS;
+    public Text DisplayValR;
     
     public GameObject AfterCreate;
-    public TextMeshProUGUI DisplayName;
-    public TextMeshProUGUI DisplayAge;
-    public TextMeshProUGUI DisplaySex;
-    public TextMeshProUGUI DisplayRemarks;
+    public GameObject Inputs;
+    public GameObject SceneTitle;
+    public Text DisplayName;
+    public Text DisplayAge;
+    public Text DisplaySex;
+    public Text DisplayRemarks;
     
     public void CreatePlayer() {
         
@@ -149,8 +151,10 @@ public class CreateNewPlayer : MonoBehaviour
     
 
     private void AfterCreateSetActive() {
+        SceneTitle.SetActive(false);
+        Inputs.SetActive(false);
         AfterCreate.SetActive(true);
-
+        
         DisplayName.text = name;
         DisplayAge.text = Convert.ToString(age);
         if (sex == "f") {
