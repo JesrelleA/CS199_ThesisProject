@@ -15,10 +15,12 @@ public class ViewPlayerRecords : MonoBehaviour
 {
     private string name;
     private string records;
+    private string daterecorded;
 
     public Button Backbtn;
     public Text DisplayName;
     public Text DisplayRecords;
+    public Text DisplayDate;
 
     public GameObject PlayerDetails;
     public GameObject ViewRecords;
@@ -29,6 +31,7 @@ public class ViewPlayerRecords : MonoBehaviour
         GetRecords();
         DisplayName.text = name;
         DisplayRecords.text = records;
+        DisplayDate.text = daterecorded;
 
         Backbtn.onClick.AddListener(HandleBackBtnClick);
     }
@@ -47,7 +50,7 @@ public class ViewPlayerRecords : MonoBehaviour
         IDbCommand dbcmd = dbconn.CreateCommand();
 
         //query
-        string sqlQuery = "SELECT Players.Name, Records.Record FROM Players INNER JOIN Records ON Players.PlayerID = " + id + " and Records.PlayerID = " + id;
+        string sqlQuery = "SELECT Players.Name, Records.Record, Records.DateRecorded FROM Players INNER JOIN Records ON Players.PlayerID = " + id + " and Records.PlayerID = " + id;
         Debug.Log(sqlQuery);
 
         dbcmd.CommandText = sqlQuery;
@@ -56,6 +59,7 @@ public class ViewPlayerRecords : MonoBehaviour
         while (reader.Read()) {
             name = reader.GetString(0);
             records = reader.GetString(1);
+            daterecorded = reader.GetString(2);
         }
 
         reader.Close();
