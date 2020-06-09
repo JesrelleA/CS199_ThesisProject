@@ -120,8 +120,6 @@ public class CreateNewPlayer : MonoBehaviour
             Debug.Log(sqlQuery);
             IDataReader reader = dbcmd.ExecuteReader();
 
-            //Debug.Log("before reader close");
-            Debug.Log("Inserted to Players");
             reader.Close();
             reader = null;
 
@@ -131,19 +129,13 @@ public class CreateNewPlayer : MonoBehaviour
             Debug.Log(sqlQuery2);
             IDataReader reader2 = dbcmd.ExecuteReader();
 
-            //Debug.Log("before reader2 close");
-            Debug.Log("Inserted to Records");
             reader2.Close();
-            //Debug.Log("after reader2 close");
             reader2 = null;
-            Debug.Log("after null");
-
 
             dbcmd.Dispose();
             dbcmd = null;
             dbconn.Close();
             dbconn = null;
-            Debug.Log("Fin yaay");
 
             AfterCreateSetActive();
         }

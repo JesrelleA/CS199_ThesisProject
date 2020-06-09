@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// A very simple object pooling class
 public class SimpleObjectPool : MonoBehaviour
 {
     // the prefab that this object pool returns instances of

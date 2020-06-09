@@ -25,7 +25,6 @@ public class ViewPlayerList : MonoBehaviour
 
     public Text SceneTitle;
 
-    // Start is called before the first frame update
     void Start() {
         session = 0;
         SceneTitle.text = "Players";
@@ -38,7 +37,7 @@ public class ViewPlayerList : MonoBehaviour
         for (int i = 0; i < playerlist.Count; i++) {
             Player player = playerlist[i];
             GameObject newButton = buttonObjectPool.GetObject ();
-            newButton.transform.SetParent(contentPanel); //not sure if this is necessary 
+            newButton.transform.SetParent(contentPanel); 
 
             SampleButton sampleButton = newButton.GetComponent<SampleButton>();
             sampleButton.Setup(player, this);

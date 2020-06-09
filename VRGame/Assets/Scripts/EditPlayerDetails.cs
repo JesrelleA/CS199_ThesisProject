@@ -11,7 +11,6 @@ using System;
 
 public class EditPlayerDetails : MonoBehaviour
 {
-    private const int V = 1;
     private int id;
     private string firstname;
     private string lastname;
@@ -19,8 +18,7 @@ public class EditPlayerDetails : MonoBehaviour
     private int age;
     private string sex;
     private string remarks;
-    //private ViewPlayerDetails playerDetailsview;
-    private ViewPlayerList viewPlayerList;
+    //private ViewPlayerList viewPlayerList;
 
     public InputField FirstNameInput;
     public InputField LastNameInput;
@@ -43,7 +41,6 @@ public class EditPlayerDetails : MonoBehaviour
     public GameObject PlayerDetails;
     public GameObject EditDetails;
 
-    ViewPlayerDetails viewdetails;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +48,7 @@ public class EditPlayerDetails : MonoBehaviour
         GetDetails();
         DisplayDetails();
 
+        CancelBtn.onClick.AddListener(DisplayDetails);
         CancelBtn.onClick.AddListener(HandleCancelBtnClick);
         SaveBtn.onClick.AddListener(HandleSaveBtnClick);
     }
@@ -69,7 +67,6 @@ public class EditPlayerDetails : MonoBehaviour
 
         //query
         string sqlQuery = "SELECT Name, Age, Sex, Remarks FROM Players WHERE PlayerID = " + id;
-        //Debug.Log(sqlQuery);
 
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
@@ -91,10 +88,6 @@ public class EditPlayerDetails : MonoBehaviour
     }
 
     private void DisplayDetails() {
-        Debug.Log("Inside display details");
-        Debug.Log(firstname);
-        Debug.Log(lastname);
-        Debug.Log(remarks);
         FirstNameInput.text = firstname;
         LastNameInput.text = lastname;
         AgeInput.text = Convert.ToString(age);
@@ -104,6 +97,12 @@ public class EditPlayerDetails : MonoBehaviour
             MaleToggle.isOn = true;
         }
         RemarksInput.text = remarks;
+
+        DisplayValFN.text = "";
+        DisplayValLN.text = "";
+        DisplayValA.text = "";
+        DisplayValS.text = "";
+        DisplayValR.text = "";
     }
 
     private void HandleCancelBtnClick() {
@@ -125,7 +124,6 @@ public class EditPlayerDetails : MonoBehaviour
         //Name
         firstname = GameObject.Find ("FirstNameInput").GetComponent<InputField>().text;
         if (firstname == "") {
-            Debug.Log("first name empty");
             isfirstname = false;
             DisplayValFN.text = "Please enter a first name."; //Display validation text for empty first name
         } else {
@@ -134,7 +132,6 @@ public class EditPlayerDetails : MonoBehaviour
         Debug.Log(firstname);
         lastname = GameObject.Find ("LastNameInput").GetComponent<InputField>().text;
         if (lastname == "") {
-            Debug.Log("last name empty");
             islastname = false;
             DisplayValLN.text = "Please enter a last name."; //Display validation text for empty last name
         } else {
@@ -145,7 +142,6 @@ public class EditPlayerDetails : MonoBehaviour
         //Age
         string agetemp = GameObject.Find ("AgeInput").GetComponent<InputField>().text;
         if (agetemp == "") {
-            Debug.Log("age empty");
             isage = false;
             DisplayValA.text = "Please enter an age."; //Display validation text for empty age
         } else {
@@ -163,7 +159,6 @@ public class EditPlayerDetails : MonoBehaviour
             sex = "m";
         }
         if ((isfemale.GetComponent<Toggle>().isOn || ismale.GetComponent<Toggle>().isOn) == false) {
-            Debug.Log("sex empty");
             issex = false;
             DisplayValS.text = "Please choose a sex."; //Display validatio
         } else {
@@ -173,7 +168,6 @@ public class EditPlayerDetails : MonoBehaviour
         //Remarks
         remarks = GameObject.Find ("RemarksInput").GetComponent<InputField>().text;
         if (remarks == "") {
-            Debug.Log("remarks empty");
             isremarks = false;
             DisplayValR.text = "Please enter a remark."; //Dispklay validation text for empty remarks
         } else {
@@ -204,7 +198,6 @@ public class EditPlayerDetails : MonoBehaviour
             dbcmd = null;
             dbconn.Close();
             dbconn = null;
-            Debug.Log("Player updated");
 
             //insert a gameobject text: "Player details saved"
             EditDetails.SetActive(false);
@@ -212,5 +205,7 @@ public class EditPlayerDetails : MonoBehaviour
             PlayerDetails.SetActive(true);
             
         }
+
+        CancelBtn.onClick.AddListener(DisplayDetails);
     } 
 }

@@ -34,7 +34,6 @@ public class ViewPlayerDetails : MonoBehaviour
     public GameObject EditDetails;
     public GameObject ViewRecords;
 
-    // Start is called before the first frame update
     void Start()
     {
         GetPlayerDetails(); 
@@ -51,7 +50,7 @@ public class ViewPlayerDetails : MonoBehaviour
         DisplayPlayerDetails();
     }
 
-    public void GetPlayerDetails() {
+    private void GetPlayerDetails() {
         id = ViewPlayerList.session;
 
         //Get other data from database
@@ -65,7 +64,6 @@ public class ViewPlayerDetails : MonoBehaviour
 
         //query
         string sqlQuery = "SELECT Name, Age, Sex, Remarks FROM Players WHERE PlayerID = " + id;
-        //Debug.Log(sqlQuery);
 
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
@@ -86,7 +84,7 @@ public class ViewPlayerDetails : MonoBehaviour
         reader = null;
     }
 
-    public void DisplayPlayerDetails() {
+    private void DisplayPlayerDetails() {
         DisplayName.text = name;
         DisplayAge.text = Convert.ToString(age);
         DisplaySex.text = sex;
@@ -107,7 +105,6 @@ public class ViewPlayerDetails : MonoBehaviour
     private void HandlePlayBtn() {
 
     }
-
 
     private void HandleBackBtnClick() {
         SceneManager.LoadScene(2);

@@ -15,8 +15,6 @@ public class SampleButton : MonoBehaviour
     public GameObject PlayerDetails;
     public GameObject ViewPlayers;
     
-
-    // Start is called before the first frame update
     void Start() {
         Buttonobj.onClick.AddListener(HandleClick);
     }
