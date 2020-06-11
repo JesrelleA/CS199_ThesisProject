@@ -45,7 +45,6 @@ public class CreateNewPlayer : MonoBehaviour
         //Name
         firstname = GameObject.Find ("FirstNameInput").GetComponent<InputField>().text;
         if (firstname == "") {
-            Debug.Log("first name empty");
             isfirstname = false;
             DisplayValFN.text = "Please enter a first name."; //Display validation text for empty first name
         } else {
@@ -54,7 +53,6 @@ public class CreateNewPlayer : MonoBehaviour
         Debug.Log(firstname);
         lastname = GameObject.Find ("LastNameInput").GetComponent<InputField>().text;
         if (lastname == "") {
-            Debug.Log("last name empty");
             islastname = false;
             DisplayValLN.text = "Please enter a last name."; //Display validation text for empty last name
         } else {
@@ -65,7 +63,6 @@ public class CreateNewPlayer : MonoBehaviour
         //Age
         string agetemp = GameObject.Find ("AgeInput").GetComponent<InputField>().text;
         if (agetemp == "") {
-            Debug.Log("age empty");
             isage = false;
             DisplayValA.text = "Please enter an age."; //Display validation text for empty age
         } else {
@@ -83,7 +80,6 @@ public class CreateNewPlayer : MonoBehaviour
             sex = "m";
         }
         if ((isfemale.GetComponent<Toggle>().isOn || ismale.GetComponent<Toggle>().isOn) == false) {
-            Debug.Log("sex empty");
             issex = false;
             DisplayValS.text = "Please choose a sex."; //Display validatio
         } else {
@@ -93,7 +89,6 @@ public class CreateNewPlayer : MonoBehaviour
         //Remarks
         remarks = GameObject.Find ("RemarksInput").GetComponent<InputField>().text;
         if (remarks == "") {
-            Debug.Log("remarks empty");
             isremarks = false;
             DisplayValR.text = "Please enter a remark."; //Dispklay validation text for empty remarks
         } else {
@@ -107,9 +102,7 @@ public class CreateNewPlayer : MonoBehaviour
             Debug.Log(conn);
             IDbConnection dbconn;
             dbconn = (IDbConnection)new SqliteConnection(conn);
-            Debug.Log("new sqlite conn");
             dbconn.Open(); //Open connection to database
-            Debug.Log("db open");
 
             IDbCommand dbcmd = dbconn.CreateCommand();
 
@@ -117,7 +110,6 @@ public class CreateNewPlayer : MonoBehaviour
             string sqlQuery = "INSERT INTO Players(Name, Age, Sex, Remarks) VALUES (\"" + name + "\", " + age + ", \"" + sex + "\", \"" + remarks + "\");"; //"INSERT INTO Players(Name, Age, Sex, Remarks) VALUES(\"hello2\", 6, \"f\", \"WORKED YAAAY\");"; //"SELECT * FROM Players;"; //"SELECT Name, Age, Sex, Remarks FROM Players";
 
             dbcmd.CommandText = sqlQuery;
-            Debug.Log(sqlQuery);
             IDataReader reader = dbcmd.ExecuteReader();
 
             reader.Close();
@@ -126,7 +118,6 @@ public class CreateNewPlayer : MonoBehaviour
             //Insert to Records
             string sqlQuery2 = "INSERT INTO Records (PlayerID, Record, DateRecorded) VALUES ((SELECT PlayerID FROM Players ORDER BY PlayerID DESC LIMIT 1), \"No record\", Date('now'));";
             dbcmd.CommandText = sqlQuery2;
-            Debug.Log(sqlQuery2);
             IDataReader reader2 = dbcmd.ExecuteReader();
 
             reader2.Close();

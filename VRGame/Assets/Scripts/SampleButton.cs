@@ -8,7 +8,7 @@ using TMPro;
 public class SampleButton : MonoBehaviour
 {
     private Player player;
-    private ViewPlayerList playerList;
+    private ViewPlayerList playerList; 
     
     public Button Buttonobj;
     public Text Name;
@@ -28,7 +28,6 @@ public class SampleButton : MonoBehaviour
 
     public void HandleClick() { //must go to a view where player details, edit details button, view records button, play button and back button is displayed
         ViewPlayerList.session = player.id;
-        Debug.Log(ViewPlayerList.session);
 
         PlayerDetails.SetActive(true);
         ViewPlayers.SetActive(false);

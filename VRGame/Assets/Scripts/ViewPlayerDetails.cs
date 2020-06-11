@@ -42,6 +42,7 @@ public class ViewPlayerDetails : MonoBehaviour
 
         EditDetailsBtn.onClick.AddListener(HandleEditDetailsBtnClick);
         ViewRecordsBtn.onClick.AddListener(HandleViewRecordsBtnClick);
+        PlayBtn.onClick.AddListener(HandlePlayBtn);
         BackBtn.onClick.AddListener(HandleBackBtnClick);
     }
 
@@ -103,7 +104,7 @@ public class ViewPlayerDetails : MonoBehaviour
     }
 
     private void HandlePlayBtn() {
-
+        SceneManager.LoadScene(3);
     }
 
     private void HandleBackBtnClick() {

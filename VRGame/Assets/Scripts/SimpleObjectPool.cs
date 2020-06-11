@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class SimpleObjectPool : MonoBehaviour
 {
-    // the prefab that this object pool returns instances of
-    public GameObject prefab;
-    // collection of currently inactive instances of the prefab
-    private Stack<GameObject> inactiveInstances = new Stack<GameObject>();
+    public GameObject prefab; //the prefab that this object pool returns instances of
+    private Stack<GameObject> inactiveInstances = new Stack<GameObject>(); //collection of currently inactive instances of the prefab
 
     // Returns an instance of the prefab
-    public GameObject GetObject() 
-    {
+    public GameObject GetObject() {
         GameObject spawnedGameObject;
 
-        // if there is an inactive instance of the prefab ready to return, return that
-        if (inactiveInstances.Count > 0) 
-        {
-            // remove the instance from teh collection of inactive instances
-            spawnedGameObject = inactiveInstances.Pop();
-        }
-        // otherwise, create a new instance
-        else 
-        {
+        if (inactiveInstances.Count > 0) { //if there is an inactive instance of the prefab ready to return, return that
+            spawnedGameObject = inactiveInstances.Pop(); //remove the instance from the collection of inactive instances
+        } else { // otherwise, create a new instance
             spawnedGameObject = (GameObject)GameObject.Instantiate(prefab);
 
             // add the PooledObject component to the prefab so we know it came from this pool
@@ -39,8 +30,7 @@ public class SimpleObjectPool : MonoBehaviour
     }
 
     // Return an instance of the prefab to the pool
-    public void ReturnObject(GameObject toReturn) 
-    {
+    public void ReturnObject(GameObject toReturn) {
         PooledObject pooledObject = toReturn.GetComponent<PooledObject>();
 
         // if the instance came from this pool, return it to the pool

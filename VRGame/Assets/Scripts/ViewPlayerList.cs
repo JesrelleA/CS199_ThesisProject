@@ -47,7 +47,6 @@ public class ViewPlayerList : MonoBehaviour
     private void AddPlayer() {
         string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
 
-        Debug.Log(conn);
         IDbConnection dbconn;
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to database

@@ -38,7 +38,6 @@ public class ViewPlayerRecords : MonoBehaviour
 
     private void GetRecords() {
         int id = ViewPlayerList.session;
-        Debug.Log(id);
 
         //Get other data from database
         string conn = "URI=file:" + Application.dataPath + "/gamedb.s3db;"; //Path to database
@@ -51,7 +50,6 @@ public class ViewPlayerRecords : MonoBehaviour
 
         //query
         string sqlQuery = "SELECT Players.Name, Records.Record, Records.DateRecorded FROM Players INNER JOIN Records ON Players.PlayerID = " + id + " and Records.PlayerID = " + id;
-        Debug.Log(sqlQuery);
 
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
